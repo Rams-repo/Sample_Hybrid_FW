@@ -1,10 +1,23 @@
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import NoSuchElementException, TimeoutException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class BasePage:
 
     def __init__(self, driver):
         self.driver = driver
+
+    def find_element(self, by, value, timeout=10):
+        try:
+            return WebDriverWait(self.driver, timeout).until(EC.presence_of_element_located((by, value)))
+        except TimeoutException:
+            print(f"Element with {by}='{value}' not found within {timeout} seconds.")
+            return None
+        except NoSuchElementException:
+            print(f"Element with {by} = '{value}' not found.")
+            return None
 
     def click_on_element(self, locator_type, locator_value):
         element = self.get_element(locator_type, locator_value)
