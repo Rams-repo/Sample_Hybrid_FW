@@ -10,6 +10,6 @@ class AccountPage(BasePage):
 
     account_confirmation_xpath = "//div[@id='content']/h2"
 
-    def verify_account_page(self,expected_text):
-        return self.retrieved_element_text_contains("account_confirmation_xpath",self.account_confirmation_xpath, expected_text)
-        #assert self.driver.find_element(*self.account_confirmation_xpath).text.__contains__("My Account")
+    def verify_account_page(self, expected_text):
+        return self.retrieved_element_text_contains("account_confirmation_xpath",
+                                                    self.account_confirmation_xpath, expected_text)

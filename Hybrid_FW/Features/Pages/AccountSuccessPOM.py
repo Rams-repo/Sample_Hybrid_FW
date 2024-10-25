@@ -12,4 +12,3 @@ class AccountSuccessPage(BasePage):
 
     def verify_account_created(self, expected_text):
         self.retrieved_element_text_equals("successful_msg_xpath", self.successful_msg_xpath, expected_text)
-        #assert self.driver.find_element(*self.successful_msg_xpath).text.__eq__("Your Account Has Been Created!")

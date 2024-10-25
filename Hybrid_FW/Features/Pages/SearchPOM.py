@@ -13,10 +13,7 @@ class SearchPage(BasePage):
 
     def verify_product_displayed(self):
         assert self.display_status("product_info_link_text", self.product_info_link_text)
-        #assert self.driver.find_element(*self.product_info_link_text).is_displayed()
 
     def verify_product_not_found_msg(self, expected_product_warning):
         self.retrieved_element_text_equals("product_error_msg_xpath", self.product_error_msg_xpath,
                                            expected_product_warning)
-        # self.driver.find_element(*self.product_error_msg_xpath)\
-        #     .text.__eq__("There is no product that matches the search criteria.")
